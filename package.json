@@ -15,6 +15,7 @@
     "@fontsource/be-vietnam-pro": "^5.1.0",
     "@tailwindcss/vite": "^4.1.12",
     "astro": "^5.13.2",
+    "photoswipe": "^5.4.4",
     "tailwindcss": "^4.1.12",
     "typescript": "^5.6.2"
   },

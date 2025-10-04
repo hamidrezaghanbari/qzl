@@ -6,13 +6,23 @@ export interface SiteConfig extends HeaderProps {
   socialLinks: { text: string; href: string }[];
   socialImage: string;
   canonicalURL?: string;
+  availableLanguages: { code: string; name: string; nativeName: string }[];
 }
 
 export interface SiteContent {
   hero: HeroProps;
   experience: ExperienceProps[];
   projects: ProjectProps[];
+  gallery: GalleryProps[];
   about: AboutProps;
+  ui: UIProps;
+}
+
+export interface UIProps {
+  getInTouch: string;
+  viewProject: string;
+  viewSource: string;
+  languageToggle: string;
 }
 
 export interface HeroProps {
@@ -39,6 +49,12 @@ export interface ProjectProps {
 }
 
 export interface AboutProps {
+  description: string;
+  image: string;
+}
+
+export interface GalleryProps {
+  title: string;
   description: string;
   image: string;
 }

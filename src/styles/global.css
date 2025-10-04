@@ -3,6 +3,7 @@
 @theme {
   --font-sans: "Be Vietnam Pro", system-ui, sans-serif;
   --font-serif: "Gabarito Variable", ui-serif, serif;
+  --font-persian: "Vazirmatn", "Be Vietnam Pro", system-ui, sans-serif;
 
   --color-primary: #2563eb;
   --color-neutral: #94a3b8;
@@ -51,3 +52,29 @@
     }
   }
 }
+
+/* RTL Support */
+[dir="rtl"] {
+  font-family: var(--font-persian);
+}
+
+[dir="rtl"] .font-sans {
+  font-family: var(--font-persian);
+}
+
+/* RTL-specific adjustments */
+[dir="rtl"] .animate-slide-in {
+  animation: slide-in-rtl 600ms ease both;
+}
+
+@keyframes slide-in-rtl {
+  10% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Persian font loading */
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap');

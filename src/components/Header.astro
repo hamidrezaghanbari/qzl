@@ -2,10 +2,19 @@
 import Menu from "@icons/Menu.astro";
 import { Image } from "astro:assets";
 import type { HeaderProps } from "@types";
+import type { Language } from "@config";
+import PersonImage from "../images/Person.jpg";
 
-type Props = HeaderProps;
+interface Props extends HeaderProps {
+  lang?: Language;
+}
 
-const { siteLogo, navLinks } = Astro.props;
+const { navLinks, lang = "en" } = Astro.props;
+
+const getLanguageTogglePath = (currentLang: Language) => {
+  if (currentLang === "en") return "/fa";
+  return "/";
+};
 ---
 
 <header
@@ -14,7 +23,7 @@ const { siteLogo, navLinks } = Astro.props;
   <a href="/" aria-label="Home link">
     <Image
       class="rounded-full"
-      src={siteLogo}
+      src={PersonImage}
       width="45"
       height="45"
       alt="website logo"
@@ -48,6 +57,15 @@ const { siteLogo, navLinks } = Astro.props;
           </li>
         ))
       }
+      <li class="relative">
+        <a
+          class="nav-item relative block p-2 text-sm font-medium transition-all duration-500 hover:text-white"
+          href={getLanguageTogglePath(lang)}
+          title={lang === "en" ? "فارسی" : "English"}
+        >
+          {lang === "en" ? "فا" : "EN"}
+        </a>
+      </li>
     </ul>
   </nav>
 </header>

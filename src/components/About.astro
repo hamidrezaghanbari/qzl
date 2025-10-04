@@ -2,10 +2,11 @@
 import Section from "./Section.astro";
 import { Image } from "astro:assets";
 import type { AboutProps, HeroProps } from "@types";
+import PersonImage from "../images/Person.jpg";
 
 type Props = AboutProps & Pick<HeroProps, "name">;
 
-const { description, image, name } = Astro.props;
+const { description, name } = Astro.props;
 ---
 
 <Section text="About Me" href="about">
@@ -16,7 +17,7 @@ const { description, image, name } = Astro.props;
     >
       <Image
         class="object-cover"
-        src={image}
+        src={PersonImage}
         width="260"
         height="260"
         alt={name}

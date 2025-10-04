@@ -1,11 +1,11 @@
-# AstroZen - Personal Portfolio Website
+# Qazal Kermani - Graphic Designer Portfolio
 
-AstroZen is a minimalist, accessible and responsive portfolio template for your personal portfolio website. It is built with Astro and TailwindCSS.
+A minimalist, accessible and responsive portfolio website for Qazal Kermani, a graphic designer based in Tehran, Iran. Built with Astro and TailwindCSS.
 
 ![zen-og](https://github.com/user-attachments/assets/7a72aaae-6652-4cd0-becc-8e6a3c224993)
 
 > [!NOTE]
-> The information contained in this template, including names, images, and content, is entirely fictitious and is intended solely to give the design a realistic appearance. Any coincidence with real-life people, events, or situations is purely coincidental. It is recommended that you replace this information with your own information.
+> This is the personal portfolio website of Qazal Kermani, a graphic designer specializing in visual design, branding, and digital experiences.
 
 ## 🔥 Features
 
@@ -23,8 +23,8 @@ AstroZen is a minimalist, accessible and responsive portfolio template for your 
 Clone this repository to your local machine using Git.
 
 ```scheme
-git clone https://github.com/immois/astro-zen.git
-cd astro-zen
+git clone https://github.com/qazalkermani/portfolio.git
+cd portfolio
 ```
 
 | Command        | Action                                       |

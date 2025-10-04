@@ -2,26 +2,34 @@
 import Header from "@components/Header.astro";
 import "@fontsource/be-vietnam-pro";
 import "@fontsource-variable/gabarito";
-import { SITE_CONFIG } from "@config";
+import { SITE_CONFIG, LANGUAGES } from "@config";
 import Footer from "@components/Footer.astro";
+import type { Language } from "@config";
+
+interface Props {
+  config?: any;
+  lang?: Language;
+}
+
+const { config, lang = "en" } = Astro.props;
 
 const {
   title,
   description,
   siteLogo,
   navLinks,
-  lang,
   author,
   socialLinks,
   socialImage,
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
-} = SITE_CONFIG;
+} = config || SITE_CONFIG[lang];
 
 const ogImgUrl = canonicalURL + socialImage;
+const isRTL = LANGUAGES[lang]?.dir === "rtl";
 ---
 
 <!doctype html>
-<html lang={lang} class="scroll-pt-16 scroll-smooth">
+<html lang={lang} class="scroll-pt-16 scroll-smooth" dir={isRTL ? "rtl" : "ltr"}>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -42,11 +50,11 @@ const ogImgUrl = canonicalURL + socialImage;
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImgUrl} />
   </head>
-  <body class="bg-black font-sans">
-    <Header siteLogo={siteLogo} navLinks={navLinks} />
+  <body class={`bg-black font-sans ${isRTL ? 'rtl' : 'ltr'}`}>
+    <Header siteLogo={siteLogo} navLinks={navLinks} lang={lang} />
     <main class="mx-auto max-w-3xl px-5">
       <slot />
     </main>
-    <Footer author={author} socialLinks={socialLinks} />
+    <Footer author={author} socialLinks={socialLinks} lang={lang} />
   </body>
 </html>

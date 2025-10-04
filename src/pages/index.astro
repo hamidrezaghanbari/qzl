@@ -1,17 +1,23 @@
 ---
-import { SITE_CONTENT } from "@config";
+import { SITE_CONTENT, SITE_CONFIG } from "@config";
 import Hero from "@components/Hero.astro";
 import Layout from "@layouts/Layout.astro";
 import Experience from "@components/Experience.astro";
 import Projects from "@components/Projects.astro";
+import Gallery from "@components/Gallery.astro";
 import About from "@components/About.astro";
 
 import "../styles/global.css";
+
+const lang = "en";
+const config = SITE_CONFIG[lang];
+const content = SITE_CONTENT[lang];
 ---
 
-<Layout>
-  <Hero {...SITE_CONTENT.hero} />
-  <Experience experience={SITE_CONTENT.experience} />
-  <Projects projects={SITE_CONTENT.projects} />
-  <About {...SITE_CONTENT.about} name={SITE_CONTENT.hero.name} />
+<Layout config={config} lang={lang}>
+  <Hero {...content.hero} ui={content.ui} />
+  <Experience experience={content.experience} />
+  <Projects projects={content.projects} />
+  <Gallery gallery={content.gallery} />
+  <About {...content.about} name={content.hero.name} />
 </Layout>

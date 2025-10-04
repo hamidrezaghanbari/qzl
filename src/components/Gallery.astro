@@ -1,0 +1,110 @@
+---
+import Section from "@components/Section.astro";
+import { Image } from "astro:assets";
+import type { GalleryProps } from "@types";
+
+// Import all images from the A folder
+import img1 from "../images/A/IMG_20251004_100615_858.jpg";
+import img2 from "../images/A/IMG_20251004_100619_871.jpg";
+import img3 from "../images/A/IMG_20251004_100625_016.jpg";
+import img4 from "../images/A/IMG_20251004_100627_295.jpg";
+import img5 from "../images/A/IMG_20251004_100630_145.jpg";
+import img6 from "../images/A/IMG_20251004_100631_948.jpg";
+import img7 from "../images/A/IMG_20251004_100633_787.jpg";
+import img8 from "../images/A/IMG_20251004_100635_345.jpg";
+import img9 from "../images/A/IMG_20251004_100637_401.jpg";
+import img10 from "../images/A/IMG_20251004_100639_664.jpg";
+import img11 from "../images/A/IMG_20251004_100642_018.jpg";
+import img12 from "../images/A/IMG_20251004_100644_650.jpg";
+import img13 from "../images/A/IMG_20251004_100648_345.jpg";
+import img14 from "../images/A/IMG_20251004_100650_637.jpg";
+import img15 from "../images/A/IMG_20251004_100709_099.jpg";
+import img16 from "../images/A/IMG_20251004_100711_417.jpg";
+import img17 from "../images/A/IMG_20251004_100713_706.jpg";
+import img18 from "../images/A/IMG_20251004_100717_207.jpg";
+import img19 from "../images/A/IMG_20251004_100720_214.jpg";
+import img20 from "../images/A/IMG_20251004_100723_012.jpg";
+import img21 from "../images/A/IMG_20251004_100724_481.jpg";
+import img22 from "../images/A/IMG_20251004_100725_733.jpg";
+import img23 from "../images/A/IMG_20251004_100726_638.jpg";
+import img24 from "../images/A/IMG_20251004_100729_049.jpg";
+import img25 from "../images/A/IMG_20251004_100731_148.jpg";
+import img26 from "../images/A/IMG_20251004_100732_829.jpg";
+import img27 from "../images/A/IMG_20251004_100735_394.jpg";
+import img28 from "../images/A/IMG_20251004_100738_546.jpg";
+import img29 from "../images/A/IMG_20251004_100739_543.jpg";
+import img30 from "../images/A/IMG_20251004_100740_940.jpg";
+import img31 from "../images/A/IMG_20251004_100743_351.jpg";
+import img32 from "../images/A/IMG_20251004_100744_837.jpg";
+import img33 from "../images/A/IMG_20251004_100745_367.jpg";
+import img34 from "../images/A/IMG_20251004_100747_793.jpg";
+import img35 from "../images/A/IMG_20251004_100749_254.jpg";
+import img36 from "../images/A/IMG_20251004_100750_870.jpg";
+import img37 from "../images/A/IMG_20251004_100752_782.jpg";
+import img38 from "../images/A/IMG_20251004_100754_899.jpg";
+import img39 from "../images/A/IMG_20251004_100756_043.jpg";
+
+interface Props {
+  gallery: GalleryProps[];
+}
+
+const { gallery } = Astro.props;
+
+const images = [
+  img1, img2, img3, img4, img5, img6, img7, img8, img9, img10,
+  img11, img12, img13, img14, img15, img16, img17, img18, img19, img20,
+  img21, img22, img23, img24, img25, img26, img27, img28, img29, img30,
+  img31, img32, img33, img34, img35, img36, img37, img38, img39
+];
+
+// Combine images with gallery data (if there are more images than gallery items, fill with defaults)
+const galleryItems = images.map((image, index) => ({
+  image,
+  title: gallery[index]?.title || `Design ${index + 1}`,
+  description: gallery[index]?.description || "Graphic design work"
+}));
+---
+
+<Section id="gallery" title="Gallery">
+  <div class="pswp-gallery grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {
+      galleryItems.map((item, index) => (
+        <a
+          href={item.image.src}
+          data-pswp-width={item.image.width}
+          data-pswp-height={item.image.height}
+          target="_blank"
+          rel="noreferrer"
+          class="group overflow-hidden rounded-lg bg-secondary transition-transform hover:scale-105 cursor-pointer"
+        >
+          <div class="aspect-[4/3] overflow-hidden">
+            <Image
+              src={item.image}
+              alt={item.title}
+              class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+            />
+          </div>
+          <div class="p-4">
+            <h3 class="mb-2 font-serif text-xl font-bold text-white">
+              {item.title}
+            </h3>
+            <p class="text-sm text-neutral">{item.description}</p>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</Section>
+
+<script>
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
+  import "photoswipe/style.css";
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: ".pswp-gallery",
+    children: "a",
+    pswpModule: () => import("photoswipe"),
+  });
+
+  lightbox.init();
+</script>
