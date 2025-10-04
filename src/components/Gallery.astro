@@ -65,10 +65,10 @@ const galleryItems = images.map((image, index) => ({
 }));
 ---
 
-<Section id="gallery" title="Gallery">
+<Section text="Gallery" href="gallery">
   <div class="pswp-gallery grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
     {
-      galleryItems.map((item, index) => (
+      galleryItems.map((item) => (
         <a
           href={item.image.src}
           data-pswp-width={item.image.width}
