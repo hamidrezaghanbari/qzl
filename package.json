@@ -16,6 +16,7 @@
     "@tailwindcss/vite": "^4.1.12",
     "astro": "^5.13.2",
     "photoswipe": "^5.4.4",
+    "sharp": "^0.34.4",
     "tailwindcss": "^4.1.12",
     "typescript": "^5.6.2"
   },

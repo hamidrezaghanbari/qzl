@@ -4,6 +4,14 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+  image: {
+    service: {
+      entrypoint: "astro/assets/services/sharp",
+      config: {
+        limitInputPixels: 536870912, // Double the default limit to handle large images
+      },
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
   },
